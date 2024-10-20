@@ -42,8 +42,7 @@ int main(int argc, char ** argv) {
 
     llama_sampler * smpl = llama_sampler_chain_init(sparams);
 
-    llama_sampler_chain_add(smpl, llama_sampler_init_softmax());
-    llama_sampler_chain_add(smpl, llama_sampler_init_dist(params.sparams.seed));
+    llama_sampler_chain_add(smpl, llama_sampler_init_post(params.sparams.seed));
 
     // tokenize prompt
     auto tokens = common_tokenize(ctx, params.prompt, true);
@@ -107,8 +106,7 @@ int main(int argc, char ** argv) {
 
     llama_sampler * smpl2 = llama_sampler_chain_init(sparams);
 
-    llama_sampler_chain_add(smpl2, llama_sampler_init_softmax());
-    llama_sampler_chain_add(smpl2, llama_sampler_init_dist(params.sparams.seed));
+    llama_sampler_chain_add(smpl2, llama_sampler_init_post(params.sparams.seed));
 
     printf("\nsecond run: %s", params.prompt.c_str());
 
@@ -171,8 +169,7 @@ int main(int argc, char ** argv) {
 
     llama_sampler * smpl3 = llama_sampler_chain_init(sparams);
 
-    llama_sampler_chain_add(smpl3, llama_sampler_init_softmax());
-    llama_sampler_chain_add(smpl3, llama_sampler_init_dist(params.sparams.seed));
+    llama_sampler_chain_add(smpl3, llama_sampler_init_post(params.sparams.seed));
 
     printf("\nsingle seq run: %s", params.prompt.c_str());
 

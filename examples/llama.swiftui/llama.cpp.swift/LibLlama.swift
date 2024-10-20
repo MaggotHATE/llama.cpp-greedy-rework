@@ -46,8 +46,7 @@ actor LlamaContext {
         let sparams = llama_sampler_chain_default_params()
         self.sampling = llama_sampler_chain_init(sparams)
         llama_sampler_chain_add(self.sampling, llama_sampler_init_temp(0.4))
-        llama_sampler_chain_add(self.sampling, llama_sampler_init_softmax())
-        llama_sampler_chain_add(self.sampling, llama_sampler_init_dist(1234))
+        llama_sampler_chain_add(self.sampling, llama_sampler_init_post(1234))
     }
 
     deinit {
