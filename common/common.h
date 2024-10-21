@@ -92,6 +92,7 @@ enum common_sampler_type {
     COMMON_SAMPLER_TYPE_TEMPERATURE = 6,
     COMMON_SAMPLER_TYPE_XTC         = 7,
     COMMON_SAMPLER_TYPE_INFILL      = 8,
+    COMMON_SAMPLER_TYPE_K_SHIFT     = 9,
 };
 
 // dimensionality reduction methods, used by cvector-generator
@@ -108,6 +109,7 @@ struct common_sampler_params {
     int32_t n_probs           = 0;     // if greater than 0, output the probabilities of top n_probs tokens.
     int32_t min_keep          = 0;     // 0 = disabled, otherwise samplers should return at least min_keep tokens
     int32_t top_k             = 40;    // <= 0 to use vocab size
+    int32_t k_shift           = 0;     // 0 = disabled
     float   top_p             = 0.95f; // 1.0 = disabled
     float   min_p             = 0.05f; // 0.0 = disabled
     float   xtc_probability   = 0.00f; // 0.0 = disabled
@@ -130,6 +132,7 @@ struct common_sampler_params {
 
 
     std::vector<enum common_sampler_type> samplers = {
+        COMMON_SAMPLER_TYPE_K_SHIFT,
         COMMON_SAMPLER_TYPE_TOP_K,
         COMMON_SAMPLER_TYPE_TFS_Z,
         COMMON_SAMPLER_TYPE_TYPICAL_P,
