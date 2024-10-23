@@ -1102,7 +1102,7 @@ extern "C" {
     /// @details XTC sampler as described in https://github.com/oobabooga/text-generation-webui/pull/6335
     LLAMA_API struct llama_sampler * llama_sampler_init_xtc        (float   p, float   t,     size_t min_keep, uint32_t seed);
 
-    // @details Shifting the first token to k as mentioned in https://arxiv.org/abs/2402.10200
+    // @details Shifting the first token by cutting out k top tokens once per dialog, as mentioned in https://arxiv.org/abs/2402.10200
     LLAMA_API struct llama_sampler * llama_sampler_init_k_shift    (int32_t k);
 
     /// @details Mirostat 1.0 algorithm described in the paper https://arxiv.org/abs/2007.14966. Uses tokens instead of words.
